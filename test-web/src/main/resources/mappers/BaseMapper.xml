@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipub.common.web.mapper.UserMapper">
+	<resultMap id="BaseModel" type="com.ipub.common.base.model.BaseModel">
+		<result column="CRT_BY" property="crtBy" jdbcType="CHAR" javaType="java.lang.String"/>
+		<result column="CRT_NM" property="crtNm" jdbcType="CHAR" javaType="java.lang.String"/>
+		<result column="CRT_TS" property="crtTs" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+		<result column="UPD_BY" property="updBy" jdbcType="CHAR" javaType="java.lang.String"/>
+		<result column="UPD_NM" property="updNm" jdbcType="CHAR" javaType="java.lang.String"/>
+		<result column="UPD_TS" property="updTs" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+		<result column="DEL" property="del" jdbcType="CHAR" javaType="java.lang.String"/>
+	</resultMap>
+</mapper>

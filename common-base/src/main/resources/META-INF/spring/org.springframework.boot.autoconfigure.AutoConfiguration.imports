@@ -1,0 +1,9 @@
+com.ipub.common.base.config.AsyncTaskConfiguration
+com.ipub.common.base.config.JacksonConfiguration
+com.ipub.common.base.config.RedisTemplateConfiguration
+com.ipub.common.base.config.WebMvcConfiguration
+com.ipub.common.base.config.ResponseHandlerConfiguration
+com.ipub.common.base.config.DruidLoggerConfiguration
+com.ipub.common.base.context.SpringContextHolder
+com.ipub.common.base.aspect.impl.ApiLogAspect
+com.ipub.common.base.aspect.impl.MethodLogAspect
