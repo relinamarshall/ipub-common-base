@@ -40,7 +40,7 @@ public class ResponseHandlerConfiguration implements ResponseBodyAdvice<Object> 
                                   @Nullable MediaType selectedContentType,
                                   @Nullable Class<? extends HttpMessageConverter<?>> selectedConverterType,
                                   @Nullable ServerHttpRequest request, @Nullable ServerHttpResponse response) {
-        R r = body instanceof R ? (R) body : R.success(body);
+        R<?> r = body instanceof R<?> inst ? inst : R.success(body);
         r.setSvc(this.svc);
         return r;
     }

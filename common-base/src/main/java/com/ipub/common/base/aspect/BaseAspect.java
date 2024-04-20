@@ -1,6 +1,7 @@
 package com.ipub.common.base.aspect;
 
 import com.ipub.common.base.util.JsonUtil;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -42,21 +43,21 @@ public abstract class BaseAspect {
      *
      * @param pjp ProceedingJoinPoint
      * @return Object
-     * @throws Throwable
      */
-    public abstract Object handle(ProceedingJoinPoint pjp) throws Throwable;
+    public abstract Object handle(ProceedingJoinPoint pjp);
 
     /**
      * handle
      *
      * @return Object
      */
-    public Object handle(String tag, ProceedingJoinPoint pjp) throws Throwable {
+    @SneakyThrows
+    public Object handle(String tag, ProceedingJoinPoint pjp) {
         log.info("------------------------------[{}] BEGIN------------------------------", tag.toUpperCase());
         long start = System.currentTimeMillis();
         RequestAttributes reqAttr = RequestContextHolder.getRequestAttributes();
-        if (reqAttr instanceof ServletRequestAttributes) {
-            HttpServletRequest req = ((ServletRequestAttributes) reqAttr).getRequest();
+        if (reqAttr instanceof ServletRequestAttributes inst) {
+            HttpServletRequest req = inst.getRequest();
             log.info("client ip {}; http type {}, path {}.", req.getRemoteAddr(), req.getMethod(), req.getRequestURL());
         }
         Signature signature = pjp.getSignature();

@@ -11,4 +11,11 @@ public final class RegExpr {
      * 六位数字
      */
     public static final String SIX_DIGITS = "^\\d{6}";
+
+    /**
+     * 私有构造
+     */
+    private RegExpr() {
+        throw new IllegalStateException("Constant class cannot be instantiated");
+    }
 }

@@ -148,9 +148,14 @@ public final class ErrorCode implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ErrorCode) {
-            return this.code.equals(((ErrorCode) obj).code);
+        if (obj instanceof ErrorCode inst) {
+            return this.code.equals(inst.code);
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.code.hashCode();
     }
 }

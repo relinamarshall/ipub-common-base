@@ -24,7 +24,7 @@ class DateUtilTest {
     }
 
     @Test
-    public void belongCalendar() {
+    void belongCalendar() {
         long time = new Date().getTime();
         Assertions.assertFalse(DateUtil.between(new Date(time + 10000), new Date(time + 20000)));
         Assertions.assertFalse(DateUtil.between(new Date(time - 10000), new Date(time - 20000)));

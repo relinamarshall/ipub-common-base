@@ -46,7 +46,7 @@ public class AsyncTaskConfiguration implements AsyncConfigurer {
     private Integer awaitTerminationSeconds = 60;
 
     @Override
-    @Bean(name = "AsyncExecutor")
+    @Bean(name = "asyncExecutor")
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         // 核心线程大小 默认取 CPU 数量

@@ -18,7 +18,7 @@ public final class R<T> implements Serializable {
     /**
      * 操作成功的空数据
      */
-    static final R<?> OK_EMPTY = success(null);
+    static final R<Void> OK_EMPTY = success(null);
     /**
      * 代码
      */
@@ -30,7 +30,7 @@ public final class R<T> implements Serializable {
     /**
      * 数据
      */
-    private final T data;
+    private final transient T data;
     /**
      * 服务名
      */
@@ -59,7 +59,7 @@ public final class R<T> implements Serializable {
      *
      * @return RestResult
      */
-    public static R<?> success() {
+    public static R<Void> success() {
         return R.OK_EMPTY;
     }
 
@@ -68,7 +68,7 @@ public final class R<T> implements Serializable {
      *
      * @param exception 错误异常
      */
-    public static R<?> fail(BaseException exception) {
+    public static R<Void> fail(BaseException exception) {
         return fail(exception.getError());
     }
 
@@ -77,7 +77,7 @@ public final class R<T> implements Serializable {
      *
      * @param error 错误信息
      */
-    public static R<?> fail(ErrorCode error) {
+    public static R<Void> fail(ErrorCode error) {
         return R.buildR(null, error.getCode(), error.getInfo());
     }
 
@@ -88,7 +88,7 @@ public final class R<T> implements Serializable {
      * @param msg  错误信息
      * @return RestResult
      */
-    public static R<?> fail(ErrorCode code, String msg) {
+    public static R<Void> fail(ErrorCode code, String msg) {
         return R.buildR(null, code.getCode(), code.fmtMsg(msg));
     }
 
@@ -107,9 +107,14 @@ public final class R<T> implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof R) {
-            return this.code.equals(((R) obj).code);
+        if (obj instanceof R<?> inst) {
+            return this.code.equals(inst.code);
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.code.hashCode();
     }
 }

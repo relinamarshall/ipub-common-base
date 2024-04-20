@@ -19,8 +19,8 @@ public class User extends BaseModel {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof User) {
-            return this.acct.equals(((User) obj).acct);
+        if (obj instanceof User inst) {
+            return this.acct.equals(inst.acct);
         }
         return false;
     }

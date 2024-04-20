@@ -1,6 +1,6 @@
 package com.ipub.common.base.config;
 
-import com.ipub.common.base.util.FmtUtil;
+import com.ipub.common.base.constant.DateFmt;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.format.FormatterRegistry;
@@ -34,9 +34,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
-        registrar.setTimeFormatter(FmtUtil.crtDtFmt(DT));
-        registrar.setDateFormatter(FmtUtil.crtDtFmt(TM));
-        registrar.setDateTimeFormatter(FmtUtil.crtDtFmt(DT_TM));
+        registrar.setTimeFormatter(DateFmt.crtDtFmt(DT));
+        registrar.setDateFormatter(DateFmt.crtDtFmt(TM));
+        registrar.setDateTimeFormatter(DateFmt.crtDtFmt(DT_TM));
         registrar.registerFormatters(registry);
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
  */
 class AssertUtilTest {
     @Test
-    public void notEmpty() {
+    void notEmpty() {
         AssertUtil.notEmpty("123", "");
 
         try {
@@ -27,7 +27,7 @@ class AssertUtilTest {
     }
 
     @Test
-    public void notEmptyColl() {
+    void notEmptyColl() {
         AssertUtil.notEmptyColl(List.of("notEmpty"), "");
         try {
             AssertUtil.notEmptyColl(null, "notEmpty");
@@ -43,7 +43,7 @@ class AssertUtilTest {
 
 
     @Test
-    public void notBlank() {
+    void notBlank() {
         AssertUtil.notBlank("123", "");
 
         try {
@@ -54,7 +54,7 @@ class AssertUtilTest {
     }
 
     @Test
-    public void notNull() {
+    void notNull() {
         AssertUtil.notNull(new Object(), "");
 
         try {
@@ -65,7 +65,7 @@ class AssertUtilTest {
     }
 
     @Test
-    public void asserTrue() {
+    void asserTrue() {
         AssertUtil.assertTrue(true, "");
 
         try {
@@ -76,7 +76,7 @@ class AssertUtilTest {
     }
 
     @Test
-    public void checkTrue() {
+    void checkTrue() {
         AssertUtil.checkTrue(true, NotLoginException::new);
         try {
             AssertUtil.checkTrue(false, NotLoginException::new);

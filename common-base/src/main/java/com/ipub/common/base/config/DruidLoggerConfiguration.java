@@ -40,8 +40,7 @@ public class DruidLoggerConfiguration extends Slf4jLogFilter {
 
     @Override
     protected void statementExecuteBatchAfter(StatementProxy statement, int[] result) {
-        String sql = statement instanceof PreparedStatementProxy ? ((PreparedStatementProxy) statement).getSql() :
-                statement.toString();
+        String sql = statement instanceof PreparedStatementProxy inst ? (inst.getSql()) : statement.toString();
         log.info("exec batch sql cost {}ms, {}.", execTs(statement), fmtSql(statement, sql));
     }
 
