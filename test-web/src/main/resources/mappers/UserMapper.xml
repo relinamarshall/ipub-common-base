@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipub.common.web.mapper.UserMapper">
+	<resultMap id="User" type="com.ipub.common.web.entity.User" extends="BaseModel">
+		<result column="acct" property="acct"/>
+		<result column="nm" property="nm"/>
+		<result column="sex" property="sex"/>
+		<result column="email" property="email"/>
+		<result column="address" property="address"/>
+	</resultMap>
+
+	<select id="queryUser" resultMap="User">
+		select *
+		from ipub.ipub_user iu
+		<where>
+			<if test='acct!=null and acct!=""'>
+				and iu.acct = #{acct}
+			</if>
+			<if test='user.nm!=null and user.nm!=""'>
+				and iu.nm like #{user.nm} || '%'
+			</if>
+			<if test='user.sex!=null and user.sex!=""'>
+				and iu.sex = #{user.sex}
+			</if>
+		</where>
+	</select>
+</mapper>
