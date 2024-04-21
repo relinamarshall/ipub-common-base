@@ -1,6 +1,5 @@
 package com.ipub.common.base.util;
 
-import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
@@ -12,8 +11,14 @@ import java.util.function.Supplier;
  * @author wen.zhou
  * @since 2024/4/19
  */
-@UtilityClass
 public final class AssertUtil {
+    /**
+     * 私有构造
+     */
+    private AssertUtil() {
+        throw new IllegalStateException("Constant class cannot be instantiated");
+    }
+
     /**
      * assertTrue
      *
@@ -57,8 +62,8 @@ public final class AssertUtil {
     /**
      * notEmptyList
      *
-     * @param list List
-     * @param msg  String
+     * @param list    List
+     * @param message String
      */
     public static void notEmptyColl(Collection<?> list, String message) {
         checkTrue(!(null == list || list.isEmpty()), () -> new IllegalArgumentException(message));

@@ -1,5 +1,6 @@
 package com.ipub.common.web.controller;
 
+import com.ipub.common.base.aspect.annotation.LogApi;
 import com.ipub.common.web.entity.User;
 import com.ipub.common.web.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author wen.zhou
  * @since 2024/4/20
  */
+@LogApi
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")

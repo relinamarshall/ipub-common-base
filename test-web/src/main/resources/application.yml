@@ -2,9 +2,9 @@ spring:
   application:
     name: ipub-common-service-test
   datasource:
-    url: jdbc:oracle:thin:@192.168.139.233:1521:ORCL
-    username: ipub
-    password: Zhouwen0510
+    url: jdbc:oracle:thin:@192.168.139.233:1521:orcl
+    username: ENC(FWO0W/nzNwCeqSafNhog7A==)
+    password: ENC(MTYrWQswGGGgm5ao/h2+J05p9vD0zOGm)
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: oracle.jdbc.OracleDriver
@@ -21,13 +21,12 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
 
-com:
-  ipub:
-    aspect:
-      method-log:
-        enabled: false
-      api-log:
-        enabled: false
+jasypt:
+  encryptor:
+    # 3.x需指定加密方法
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: atpingan
 
 logging:
   level:
