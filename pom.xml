@@ -66,11 +66,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -118,9 +113,25 @@
 				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>${druid.version}</version>
 			</dependency>
+			<!--配置文件加解密-->
+			<dependency>
+				<groupId>com.github.ulisesbocchio</groupId>
+				<artifactId>jasypt-spring-boot-starter</artifactId>
+				<version>${jasypt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-extension</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-annotation</artifactId>
 				<version>${mybatis-plus.version}</version>
 			</dependency>
 			<!--配置文件加解密-->
