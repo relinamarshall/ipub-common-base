@@ -60,8 +60,8 @@ public final class AssertUtil {
     /**
      * notEmptyList
      *
-     * @param list List
-     * @param msg  String
+     * @param list    List
+     * @param message String
      */
     public static void notEmptyColl(Collection<?> list, String message) {
         checkTrue(!(null == list || list.isEmpty()), () -> new IllegalArgumentException(message));
