@@ -1,5 +1,7 @@
 package com.ipub.common.base.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.experimental.UtilityClass;
 
 import java.time.LocalDate;
@@ -14,6 +16,7 @@ import java.util.Date;
  * @since 2024/4/20
  */
 @UtilityClass
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DateUtil {
     /**
      * 将LocalDate转换为Date

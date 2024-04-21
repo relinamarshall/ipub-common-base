@@ -1,5 +1,7 @@
 package com.ipub.common.base.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 
@@ -13,6 +15,7 @@ import java.util.function.Supplier;
  * @since 2024/4/19
  */
 @UtilityClass
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AssertUtil {
     /**
      * assertTrue
