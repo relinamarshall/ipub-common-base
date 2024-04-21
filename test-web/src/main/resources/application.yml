@@ -23,6 +23,7 @@ mybatis-plus:
 
 jasypt:
   encryptor:
+    # 3.x需指定加密方法
     algorithm: PBEWithMD5AndDES
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
     password: atpingan
