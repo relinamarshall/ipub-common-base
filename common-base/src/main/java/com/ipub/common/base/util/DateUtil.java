@@ -1,9 +1,5 @@
 package com.ipub.common.base.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.experimental.UtilityClass;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -15,9 +11,14 @@ import java.util.Date;
  * @author wen.zhou
  * @since 2024/4/20
  */
-@UtilityClass
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DateUtil {
+    /**
+     * 私有构造
+     */
+    private DateUtil() {
+        throw new IllegalStateException("Constant class cannot be instantiated");
+    }
+
     /**
      * 将LocalDate转换为Date
      *

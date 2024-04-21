@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ipub.common</groupId>
 	<artifactId>ipub-common-service</artifactId>
-	<version>${project.version}</version>
+	<version>${ipub.version}</version>
 	<packaging>pom</packaging>
 	<name>ipub-common-service</name>
 	<description>ipub-common-service</description>
@@ -14,7 +14,7 @@
 	</modules>
 
 	<properties>
-		<project.version>0.0.1</project.version>
+		<ipub.version>0.0.1</ipub.version>
 		<common-base.version>0.0.1</common-base.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

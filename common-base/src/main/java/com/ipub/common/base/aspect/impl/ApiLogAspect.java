@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 /**
  * ApiLogAspect
@@ -17,10 +16,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
  */
 @Aspect
 @AutoConfiguration
-@ConditionalOnProperty(name = "com.ipub.aspect.api-log.enabled", havingValue = "true")
 public class ApiLogAspect extends BaseAspect {
     @Override
-    @Pointcut("@within(org.springframework.web.bind.annotation.RestController)")
+    @Pointcut("@within(com.ipub.common.base.aspect.annotation.LogApi)")
     public void aspect() {
     }
 

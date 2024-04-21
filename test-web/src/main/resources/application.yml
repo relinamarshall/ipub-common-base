@@ -2,7 +2,7 @@ spring:
   application:
     name: ipub-common-service-test
   datasource:
-    url: jdbc:oracle:thin:@192.168.139.233:1521:ORCL
+    url: jdbc:oracle:thin:@192.168.139.233:1521:orcl
     username: ipub
     password: Zhouwen0510
     # 使用druid数据源
@@ -20,14 +20,6 @@ mybatis-plus:
       logic-not-delete-value: 0
   configuration:
     map-underscore-to-camel-case: true
-
-com:
-  ipub:
-    aspect:
-      method-log:
-        enabled: false
-      api-log:
-        enabled: false
 
 logging:
   level:

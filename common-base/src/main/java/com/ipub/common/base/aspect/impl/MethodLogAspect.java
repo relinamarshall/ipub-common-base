@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 /**
  * MethodLogAspect
@@ -17,7 +16,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
  */
 @Aspect
 @AutoConfiguration
-@ConditionalOnProperty(name = "com.ipub.aspect.method-log.enabled", havingValue = "true")
 public class MethodLogAspect extends BaseAspect {
     @Override
     @Pointcut("@annotation(com.ipub.common.base.aspect.annotation.LogMethod)")

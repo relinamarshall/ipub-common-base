@@ -34,49 +34,48 @@ public class DruidLoggerConfiguration extends Slf4jLogFilter {
     private final SQLUtils.FormatOption formatOption = new SQLUtils.FormatOption(false, true);
 
     @Override
-    protected void statementExecuteAfter(StatementProxy statement, String sql, boolean firstResult) {
-        log.info("exec sql cost {}ms, {}.", execTs(statement), fmtSql(statement, sql));
+    protected void statementExecuteAfter(StatementProxy sp, String sql, boolean firstResult) {
+        logSqlInfo(sp, sql);
     }
 
     @Override
-    protected void statementExecuteBatchAfter(StatementProxy statement, int[] result) {
-        String sql = statement instanceof PreparedStatementProxy inst ? (inst.getSql()) : statement.toString();
-        log.info("exec batch sql cost {}ms, {}.", execTs(statement), fmtSql(statement, sql));
+    protected void statementExecuteBatchAfter(StatementProxy sp, int[] result) {
+        logSqlInfo(sp, sp instanceof PreparedStatementProxy inst ? (inst.getSql()) : sp.toString());
     }
 
     @Override
-    protected void statementExecuteQueryAfter(StatementProxy statement, String sql, ResultSetProxy resultSet) {
-        log.info("exec query sql cost {}ms, {}.", execTs(statement), fmtSql(statement, sql));
+    protected void statementExecuteQueryAfter(StatementProxy sp, String sql, ResultSetProxy resultSet) {
+        logSqlInfo(sp, sql);
     }
 
     @Override
-    protected void statementExecuteUpdateAfter(StatementProxy statement, String sql, int updateCount) {
-        log.info("exec update sql cost {}ms, {}.", execTs(statement), fmtSql(statement, sql));
+    protected void statementExecuteUpdateAfter(StatementProxy sp, String sql, int updateCount) {
+        logSqlInfo(sp, sql);
     }
 
     @Override
-    protected void statement_executeErrorAfter(StatementProxy statement, String sql, Throwable error) {
-        log.error("exec sql failed! {}", fmtSql(statement, sql), error);
+    protected void statement_executeErrorAfter(StatementProxy sp, String sql, Throwable error) {
+        log.error("exec sql failed! {}", fmtSql(sp, sql), error);
     }
 
     /**
      * getFormatSql
      *
-     * @param statement StatementProxy
-     * @param sql       String
+     * @param sp  StatementProxy
+     * @param sql String
      * @return String
      */
-    private String fmtSql(StatementProxy statement, String sql) {
+    private String fmtSql(StatementProxy sp, String sql) {
         String formatSql = sql;
-        int parametersSize = statement.getParametersSize();
-        if (parametersSize > 0) {
-            List<Object> parameters = new ArrayList<>(parametersSize);
-            IntStream.range(0, parametersSize).forEach(i -> {
-                JdbcParameter parameter = statement.getParameter(i);
+        int size = sp.getParametersSize();
+        if (size > 0) {
+            List<Object> parameters = new ArrayList<>(size);
+            IntStream.range(0, size).forEach(i -> {
+                JdbcParameter parameter = sp.getParameter(i);
                 parameters.add(parameter != null ? parameter.getValue() : null);
             });
 
-            String dbType = statement.getConnectionProxy().getDirectDataSource().getDbType();
+            String dbType = sp.getConnectionProxy().getDirectDataSource().getDbType();
             formatSql = SQLUtils.format(sql, DbType.valueOf(dbType), parameters, formatOption);
         }
         return patternBlank.matcher(formatSql).replaceAll(" ");
@@ -85,11 +84,22 @@ public class DruidLoggerConfiguration extends Slf4jLogFilter {
     /**
      * getExecTimeMs
      *
-     * @param statement StatementProxy
+     * @param sp StatementProxy
      * @return long
      */
-    private long execTs(StatementProxy statement) {
-        statement.setLastExecuteTimeNano();
-        return (long) (statement.getLastExecuteTimeNano() / 1000000D);
+    private long execTs(StatementProxy sp) {
+        sp.setLastExecuteTimeNano();
+        return (long) (sp.getLastExecuteTimeNano() / 1000000D);
+    }
+
+
+    /**
+     * logSqlInfo
+     *
+     * @param sp  StatementProxy
+     * @param sql String
+     */
+    private void logSqlInfo(StatementProxy sp, String sql) {
+        log.info("exec sql cost {}ms, {}.", execTs(sp), fmtSql(sp, sql));
     }
 }

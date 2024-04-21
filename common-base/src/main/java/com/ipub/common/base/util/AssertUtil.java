@@ -1,8 +1,5 @@
 package com.ipub.common.base.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
@@ -14,9 +11,14 @@ import java.util.function.Supplier;
  * @author wen.zhou
  * @since 2024/4/19
  */
-@UtilityClass
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AssertUtil {
+    /**
+     * 私有构造
+     */
+    private AssertUtil() {
+        throw new IllegalStateException("Constant class cannot be instantiated");
+    }
+
     /**
      * assertTrue
      *
